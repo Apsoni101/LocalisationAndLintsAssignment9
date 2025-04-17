@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:foodappassignment8/app_localisation/app_localizations.dart';
 import 'package:foodappassignment8/core/constants/app_assets.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
@@ -48,7 +49,7 @@ class SuccessDialog extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
               ),
-              onPressed: () { context.router.pop();},
+              onPressed: () { context.router.maybePop();},
               child: Text(
                 AppLocalizations.of(context).goBack,
                 style: AppTextStyles.goBack,

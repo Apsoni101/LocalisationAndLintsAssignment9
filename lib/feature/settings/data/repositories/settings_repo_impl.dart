@@ -11,13 +11,13 @@ class SettingsRepoImpl implements SettingsRepo {
   SettingsRepoImpl({required this.settingsLocalDataSource});
 
   @override
-  Future<void> changeLocale(AppLocale locale) {
-    return settingsLocalDataSource.setLocale(locale.code);
+  Future<void> changeLocale(AppLocale? locale) {
+    return settingsLocalDataSource.setLocale(AppLocaleModel.fromEntity(locale));
   }
 
   @override
-  Future<AppLocale> getLocale() async {
+  Future<AppLocale?> getLocale() async {
     final code = await settingsLocalDataSource.getLocale();
-    return AppLocaleModel(code ?? 'en');
+    return code;
   }
 }

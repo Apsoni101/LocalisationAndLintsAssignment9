@@ -1,6 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:foodappassignment8/l10n/app_localizations.dart';
+import 'package:foodappassignment8/app_localisation/app_localizations.dart';
 @RoutePage()
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});

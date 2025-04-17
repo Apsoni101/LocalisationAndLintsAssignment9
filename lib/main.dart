@@ -6,28 +6,37 @@ import 'package:foodappassignment8/core/di/service_locator.dart';
 import 'package:foodappassignment8/core/navigation/app_router.dart';
 import 'package:foodappassignment8/feature/settings/presentation/bloc/settings_bloc.dart';
 
-import 'l10n/app_localizations.dart';
+import 'app_localisation/app_localizations.dart';
+import 'feature/user_profile/presentation/bloc/user_profile_bloc.dart';
 
 void main() {
   AppInjector.setupInjector();
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
+  MyApp({super.key});
+
   final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-      AppInjector.injector<SettingsBloc>()..add(LoadSettingsEvent()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              AppInjector.injector<SettingsBloc>()..add(LoadSettingsEvent()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              AppInjector.injector<UserProfileBloc>()..add(LoadUserProfile()),
+        ),
+      ],
       child: BlocBuilder<SettingsBloc, SettingsState>(
         builder: (context, state) {
           Locale? locale;
-          if (state is SettingsLoaded) {
-            locale = Locale(state.locale.code);
+          if (state is SettingsLoaded && state.locale?.code != null) {
+            locale = Locale(state.locale!.code!);
           }
 
           return MaterialApp.router(
@@ -54,4 +63,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

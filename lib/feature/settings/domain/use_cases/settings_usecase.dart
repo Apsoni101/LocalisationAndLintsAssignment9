@@ -7,6 +7,6 @@ class SettingsUseCase{
 
   SettingsUseCase({required this.repository});
 
-  Future<void> setAppLocale(AppLocale locale) => repository.changeLocale(locale);
-  Future<AppLocale> getAppLocale() => repository.getLocale();
+  Future<void> setAppLocale(AppLocale? locale) => repository.changeLocale(locale);
+  Future<AppLocale?> getAppLocale() => repository.getLocale();
 }

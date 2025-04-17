@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodappassignment8/app_localisation/app_localizations.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
 import 'package:foodappassignment8/feature/food_detail/presentation%20/widgets/increment_decrement_button.dart';
-import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 class QuantitySelector extends StatelessWidget {
   const QuantitySelector({super.key});

@@ -8,6 +8,11 @@ sealed class UserProfileEvent extends Equatable {
 
 class LoadUserProfile extends UserProfileEvent {}
 
+
+class EnableEditEvent extends UserProfileEvent {}
+
+class DisableEditEvent extends UserProfileEvent {}
+
 class UpdateUserProfile extends UserProfileEvent {
   final UserProfileEntity user;
   UpdateUserProfile(this.user);

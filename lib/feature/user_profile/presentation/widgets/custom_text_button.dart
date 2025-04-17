@@ -7,12 +7,13 @@ class CustomTextButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? iconColor;
   final TextStyle? style;
-  const CustomTextButton({super.key, required this.title, required this.icon, this.side, this.backgroundColor, this.style, this.iconColor});
+  final VoidCallback? onPress;
+  const CustomTextButton({super.key, required this.title, required this.icon, this.side, this.backgroundColor, this.style, this.iconColor, this.onPress});
 
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
-      onPressed: () {},
+      onPressed: onPress,
       label: Text(title,
           style: style),
 

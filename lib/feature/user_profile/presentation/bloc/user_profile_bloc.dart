@@ -12,6 +12,7 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
   UserProfileBloc({required this.userProfileUseCase}) : super(UserProfileInitial()) {
     on<LoadUserProfile>(_loadUserProfile);
     on<UpdateUserProfile>(_updateUserProfile);
+    on<EnableEditEvent>(_enableEditEvent);
     on<ClearUserProfileEvent>(_clearUserProfile);
   }
   Future<void> _loadUserProfile(LoadUserProfile event, Emitter<UserProfileState> emit) async {
@@ -31,6 +32,10 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
     } catch (e) {
       emit(UserProfileError(e.toString()));
     }
+  }
+
+  Future<void> _enableEditEvent(EnableEditEvent event, Emitter<UserProfileState> emit) async {
+   emit(UserProfileEditState(true));
   }
 
   Future<void> _clearUserProfile(ClearUserProfileEvent event, Emitter<UserProfileState> emit) async {

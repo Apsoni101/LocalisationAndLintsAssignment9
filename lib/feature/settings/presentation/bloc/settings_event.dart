@@ -10,7 +10,7 @@ final class LoadSettingsEvent extends SettingsEvent{
 
 }
 final class ChangeLocaleEvent extends SettingsEvent{
-  final AppLocale locale;
+  final AppLocale? locale;
   ChangeLocaleEvent({required this.locale});
   @override
   List<Object?> get props => [locale];
