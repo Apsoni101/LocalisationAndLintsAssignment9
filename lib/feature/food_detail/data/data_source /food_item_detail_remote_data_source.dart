@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:foodappassignment8/core/networking/network_constants.dart';
 import 'package:foodappassignment8/core/networking/network_failure.dart';
 import 'package:foodappassignment8/core/networking/network_service.dart';
@@ -8,18 +9,23 @@ abstract class FoodItemDetailRemoteDataSource {
   Future<Either<NetworkFailure, FoodItemModel>> getFoodItem(int id);
 }
 
-class FoodItemDetailRemoteDataSourceImpl implements FoodItemDetailRemoteDataSource {
-  final NetworkService networkService;
-
+class FoodItemDetailRemoteDataSourceImpl
+    implements FoodItemDetailRemoteDataSource {
   FoodItemDetailRemoteDataSourceImpl({required this.networkService});
+
+  final NetworkService networkService;
 
   @override
   Future<Either<NetworkFailure, FoodItemModel>> getFoodItem(int id) async {
-    final response = await networkService.getPath("${NetworkConstants.products}/$id");
-    return response.fold((failure) => Left(failure), (response) {
-      final  data = response.data[NetworkConstants.product];
-      final foodItem = FoodItemModel.fromJson(data);
-      return Right(foodItem);
+    final Either<NetworkFailure, Response<dynamic>> response =
+        await networkService.getPath("${NetworkConstants.products}/$id");
+    return response.fold(
+        (NetworkFailure failure) =>
+            Left<NetworkFailure, FoodItemModel>(failure),
+        (Response<dynamic> response) {
+      final dynamic data = response.data[NetworkConstants.product];
+      final FoodItemModel foodItem = FoodItemModel.fromJson(data);
+      return Right<NetworkFailure, FoodItemModel>(foodItem);
     });
   }
 }

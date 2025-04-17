@@ -1,12 +1,9 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodappassignment8/core/constants/app_assets.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
-import 'package:foodappassignment8/core/di/service_locator.dart';
 import 'package:foodappassignment8/core/utils%20/screen_size_utils.dart' show ScreenSizeUtils;
-import 'package:foodappassignment8/feature/user_profile/presentation/bloc/user_profile_bloc.dart';
 import 'package:foodappassignment8/feature/user_profile/presentation/widgets/edit_profile_appbar.dart';
 import 'package:foodappassignment8/feature/user_profile/presentation/widgets/user_edit_profile_details_section.dart';
 
@@ -16,73 +13,62 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = ScreenSizeUtils(context);
-    return BlocProvider(
-      create: (context) =>
-      AppInjector.injector<UserProfileBloc>()..add(LoadUserProfile()),
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: EditProfileAppbar(),
-        body: BlocBuilder<UserProfileBloc, UserProfileState>(
-          builder: (context, state) {
-            if (state is UserProfileLoaded) {
-              return Stack(
-                children: [
-                  Positioned(
-                    top: size.h(0.06),
-                    left: 0,
-                    right: 0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Image.asset(AppAssets.halfLeftBurger),
-                        Image.asset(AppAssets.halfRightBurger),
-                      ],
-                    ),
+    final ScreenSizeUtils size = ScreenSizeUtils(context);
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: const EditProfileAppbar(),
+      body: Stack(
+              children: <Widget>[
+                Positioned(
+                  top: size.h(0.06),
+                  left: 0,
+                  right: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Image.asset(AppAssets.halfLeftBurger),
+                      Image.asset(AppAssets.halfRightBurger),
+                    ],
                   ),
+                ),
 
-                  Container(
-                    height: double.infinity,
-                    width: double.infinity,
-                    color: AppColors.editProfileBg.withValues(alpha: 0.8),
-                  ),
-                  Positioned.fill(
-                    top: size.h(0.24),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(32),
-                          topRight: Radius.circular(32),
-                        ),
-                      ),
-                      padding: EdgeInsets.symmetric(
-                        vertical: 70,
-                      ),
-                      child: UserEditProfileDetailsSection(),
-                    ),
-                  ),
-                  Positioned(
-                    top: size.h(0.1),
-                    left: 0,
-                    right: 0,
-                    child: Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          AppAssets.borderProfile,
-                        ),
+                Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  color: AppColors.editProfileBg.withValues(alpha: 0.8),
+                ),
+                Positioned.fill(
+                  top: size.h(0.24),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(32),
+                        topRight: Radius.circular(32),
                       ),
                     ),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 70,
+                    ),
+                    child: const UserEditProfileDetailsSection(),
                   ),
-                ],
-              );
-            }
-
-            return const Center(child: CircularProgressIndicator());
-          },
-        ),
-      ),
+                ),
+                Positioned(
+                  top: size.h(0.1),
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
+                        AppAssets.borderProfile,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ,
     );
   }
 }

@@ -1,20 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:foodappassignment8/app_localisation/app_localizations.dart';
 import 'package:foodappassignment8/core/constants/app_assets.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
 import 'package:foodappassignment8/core/navigation/app_router.gr.dart';
-import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 @RoutePage()
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
-
+  void _navigate(BuildContext context) {
+    Future<dynamic>.delayed(const Duration(seconds: 1), () {
+      if (context.mounted) {
+        context.replaceRoute(const HomeRoute());
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 1), () {
-      context.replaceRoute(const HomeRoute());
-    });
+    _navigate(context);
 
     return Scaffold(
         body: Container(
@@ -22,15 +26,15 @@ class SplashScreen extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [
+          colors: <Color>[
             AppColors.gradientTop,
             AppColors.gradientCenter,
             AppColors.gradientBottom
-          ],
+          ,],
         ),
       ),
       child: Stack(
-        children: [
+        children: <Widget>[
           Center(
             heightFactor: 10,
             child: Text(
@@ -48,6 +52,6 @@ class SplashScreen extends StatelessWidget {
           ),
         ],
       ),
-    ));
+    ),);
   }
 }

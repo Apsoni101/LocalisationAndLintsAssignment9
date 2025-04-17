@@ -12,12 +12,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      routes: const [
+      routes: const <PageRouteInfo<dynamic>> [
         FoodsListRoute(),
         ProfileDisplayInfoRoute(),
         CommentsRoute(),
         WishlistRoute()
-      ],
+      ,],
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         shape: const CircleBorder(),
@@ -29,7 +29,14 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBuilder: (context,_) => const CustomBottomNavigation(),
-    );
+      bottomNavigationBuilder: (BuildContext context, _) {
+        final TabsRouter tabsRouter = AutoTabsRouter.of(context);
+        return Builder(
+          builder: (BuildContext context) => CustomBottomNavigation(
+            activeIndex: tabsRouter.activeIndex,
+            onTap: tabsRouter.setActiveIndex,
+          ),
+        );
+      },    );
   }
 }

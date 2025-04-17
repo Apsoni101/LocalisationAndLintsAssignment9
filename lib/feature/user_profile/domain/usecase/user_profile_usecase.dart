@@ -4,9 +4,9 @@ import 'package:foodappassignment8/feature/user_profile/domain/entity/user_profi
 import 'package:foodappassignment8/feature/user_profile/domain/repo/user_profile_repo.dart';
 
 class UserProfileUseCase {
-  final UserProfileRepo repo;
 
   UserProfileUseCase({required this.repo});
+  final UserProfileRepo repo;
 
   UserProfileEntity getUserProfile() {
     return repo.getUser();

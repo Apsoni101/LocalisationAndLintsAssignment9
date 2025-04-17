@@ -5,8 +5,8 @@ import 'package:foodappassignment8/feature/food_listing/domain/entity/food_item_
 import 'package:foodappassignment8/feature/food_listing/domain/repo/food_list_repo.dart';
 
 class GetAllFoodsList {
-  final FoodListRepo foodListRepo;
   GetAllFoodsList({required this.foodListRepo});
+  final FoodListRepo foodListRepo;
   Future<Either<NetworkFailure, List<FoodItemEntity>>> getAllFoodsList() {
     return foodListRepo.getAllFoods();
   }

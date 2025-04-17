@@ -1,17 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 class FoodItemEntity extends Equatable {
-  final int id;
-  final String title;
-  final String image;
-  final double price;
-  final String description;
-  final String brand;
-  final String model;
-  final String color;
-  final String category;
-  final double? discount;
-  final bool? popular;
 
   const FoodItemEntity({
     required this.id,
@@ -26,6 +15,17 @@ class FoodItemEntity extends Equatable {
     this.discount = 0.0,
     this.popular = false,
   });
+  final int id;
+  final String title;
+  final String image;
+  final double price;
+  final String description;
+  final String brand;
+  final String model;
+  final String color;
+  final String category;
+  final double? discount;
+  final bool? popular;
 
   FoodItemEntity copyWith({
     int? id,
@@ -56,7 +56,7 @@ class FoodItemEntity extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
+  List<Object?> get props => <Object?>[
         id,
         title,
         image,

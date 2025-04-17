@@ -18,7 +18,7 @@ import 'app_localizations_hi.dart';
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'l10n/app_localizations.dart';
+/// import 'app_localisation/app_localizations.dart';
 ///
 /// return MaterialApp(
 ///   localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -173,6 +173,12 @@ abstract class AppLocalizations {
   /// **'Spicy'**
   String get spicy;
 
+  /// No description provided for @wishlistEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your wishlist is empty'**
+  String get wishlistEmpty;
+
   /// No description provided for @mild.
   ///
   /// In en, this message translates to:
@@ -251,6 +257,18 @@ abstract class AppLocalizations {
   /// **'Edit Profile'**
   String get editProfile;
 
+  /// No description provided for @updateProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Profile'**
+  String get updateProfile;
+
+  /// No description provided for @isRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'is Required'**
+  String get isRequired;
+
   /// No description provided for @orderHistory.
   ///
   /// In en, this message translates to:
@@ -268,6 +286,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Go Back'**
   String get goBack;
+
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language'**
+  String get changeLanguage;
 
   /// No description provided for @success.
   ///

@@ -1,6 +1,22 @@
 import 'package:foodappassignment8/feature/food_listing/domain/entity/food_item_entity.dart';
 
 class FoodItemModel extends FoodItemEntity {
+
+  factory FoodItemModel.fromEntity(FoodItemEntity entity) {
+    return FoodItemModel(
+      id: entity.id,
+      title: entity.title,
+      image: entity.image,
+      price: entity.price,
+      description: entity.description,
+      brand: entity.brand,
+      model: entity.model,
+      color: entity.color,
+      category: entity.category,
+      discount: entity.discount,
+      popular: entity.popular,
+    );
+  }
   const FoodItemModel(
       {required super.id,
       required super.title,
@@ -12,7 +28,7 @@ class FoodItemModel extends FoodItemEntity {
       required super.color,
       required super.category,
       super.discount,
-      super.popular});
+      super.popular,});
 
   factory FoodItemModel.fromJson(Map<String, dynamic> json) {
     return FoodItemModel(
@@ -31,7 +47,7 @@ class FoodItemModel extends FoodItemEntity {
   }
 
   Map<String, dynamic> toJson() {
-    return {
+    return <String, dynamic>{
       'id': id,
       'title': title,
       'image': image,
@@ -58,6 +74,6 @@ class FoodItemModel extends FoodItemEntity {
         color: color,
         category: category,
         discount: discount,
-        popular: popular);
+        popular: popular,);
   }
 }

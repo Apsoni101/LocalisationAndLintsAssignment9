@@ -1,9 +1,5 @@
 
 class UserProfileEntity {
-  final String name;
-  final String email;
-  final String address;
-  final String password;
 
   const UserProfileEntity({
     required this.name,
@@ -11,8 +7,12 @@ class UserProfileEntity {
     required this.address,
     required this.password,
   });
+  final String name;
+  final String email;
+  final String address;
+  final String password;
 
-  static const empty = UserProfileEntity(
+  static const UserProfileEntity empty = UserProfileEntity(
     name: '',
     email: '',
     address: '',

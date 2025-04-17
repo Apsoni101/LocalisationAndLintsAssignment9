@@ -5,9 +5,9 @@ import 'package:foodappassignment8/feature/user_profile/domain/entity/user_profi
 import 'package:foodappassignment8/feature/user_profile/domain/repo/user_profile_repo.dart';
 
 class UserProfileRepoImpl implements UserProfileRepo {
-  final UserProfileLocalDataSource localDataSource;
 
   UserProfileRepoImpl({required this.localDataSource});
+  final UserProfileLocalDataSource localDataSource;
 
   @override
   UserProfileEntity getUser() => localDataSource.getUserProfile();

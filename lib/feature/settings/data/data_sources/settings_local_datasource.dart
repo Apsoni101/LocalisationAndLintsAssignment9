@@ -1,18 +1,20 @@
+import 'package:foodappassignment8/feature/settings/data/models/app_locale_model.dart';
+
 abstract class SettingsLocalDataSource {
-  Future<void> setLocale(String code);
-  Future<String?> getLocale();
+  Future<void> setLocale(AppLocaleModel? code);
+  Future<AppLocaleModel?> getLocale();
 }
 
 class SettingsLocalDataSourceImpl implements SettingsLocalDataSource {
-  String? _locale;
+  AppLocaleModel? _locale;
 
   @override
-  Future<void> setLocale(String code) async {
-    _locale = code;
+  Future<void> setLocale(AppLocaleModel? locale) async {
+    _locale = locale;
   }
 
   @override
-  Future<String?> getLocale() async {
+  Future<AppLocaleModel?> getLocale() async {
     return _locale;
   }
 }

@@ -19,10 +19,15 @@ import 'package:foodappassignment8/feature/user_profile/data/repo_impl/user_prof
 import 'package:foodappassignment8/feature/user_profile/domain/repo/user_profile_repo.dart';
 import 'package:foodappassignment8/feature/user_profile/domain/usecase/user_profile_usecase.dart';
 import 'package:foodappassignment8/feature/user_profile/presentation/bloc/user_profile_bloc.dart';
+import 'package:foodappassignment8/feature/wishlist/data/data_sources/wishlist_local_datasource.dart';
+import 'package:foodappassignment8/feature/wishlist/data/repositories/wishlist_repo_impl.dart';
+import 'package:foodappassignment8/feature/wishlist/domain/repositories/wishlist_repo.dart';
+import 'package:foodappassignment8/feature/wishlist/domain/use_cases/wishlist_usecase.dart';
+import 'package:foodappassignment8/feature/wishlist/presentation/bloc/wishlist_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 class AppInjector {
-  static final injector = GetIt.instance;
+  static final GetIt injector = GetIt.instance;
 
   static Future<void> setupInjector() async {
     injector
@@ -31,45 +36,53 @@ class AppInjector {
       //datasource
       ..registerLazySingleton<FoodListRemoteDataSource>(() =>
           FoodListRemoteDataSourceImpl(
-              networkService: injector<NetworkService>()))
+              networkService: injector<NetworkService>(),),)
       ..registerLazySingleton<FoodItemDetailRemoteDataSource>(() =>
           FoodItemDetailRemoteDataSourceImpl(
-              networkService: injector<NetworkService>()))
+              networkService: injector<NetworkService>(),),)
       ..registerLazySingleton<UserProfileLocalDataSource>(
-          () => UserProfileLocalDataSourceImpl())
+          () => UserProfileLocalDataSourceImpl(),)
       ..registerLazySingleton<SettingsLocalDataSource>(
-          () => SettingsLocalDataSourceImpl())
+          () => SettingsLocalDataSourceImpl(),)
+      ..registerLazySingleton<WishListLocalDataSource>(
+          () => WishListLocalDataSourceImpl(),)
 
       //repo
       ..registerLazySingleton<FoodListRepo>(() => FoodListRepoImpl(
-          foodListRemoteDataSource: injector<FoodListRemoteDataSource>()))
+          foodListRemoteDataSource: injector<FoodListRemoteDataSource>(),),)
       ..registerLazySingleton<FoodItemDetailRepo>(() => FoodItemDetailRepoImpl(
           foodItemDetailRemoteDataSource:
-              injector<FoodItemDetailRemoteDataSource>()))
+              injector<FoodItemDetailRemoteDataSource>(),),)
       ..registerLazySingleton<UserProfileRepo>(() => UserProfileRepoImpl(
             localDataSource: injector<UserProfileLocalDataSource>(),
-          ))
+          ),)
       ..registerLazySingleton<SettingsRepo>(() => SettingsRepoImpl(
-          settingsLocalDataSource: injector<SettingsLocalDataSource>()))
+          settingsLocalDataSource: injector<SettingsLocalDataSource>(),),)
+      ..registerLazySingleton<WishListRepo>(() => WishlistRepoImpl(
+          wishListLocalDataSource: injector<WishListLocalDataSource>(),),)
 
       //useCase
       ..registerLazySingleton<GetAllFoodsList>(
-          () => GetAllFoodsList(foodListRepo: injector<FoodListRepo>()))
+          () => GetAllFoodsList(foodListRepo: injector<FoodListRepo>()),)
       ..registerLazySingleton<GetFoodItemDetail>(() =>
-          GetFoodItemDetail(foodItemDetailRepo: injector<FoodItemDetailRepo>()))
+          GetFoodItemDetail(foodItemDetailRepo: injector<FoodItemDetailRepo>()),)
       ..registerLazySingleton<UserProfileUseCase>(
-          () => UserProfileUseCase(repo: injector<UserProfileRepo>()))
+          () => UserProfileUseCase(repo: injector<UserProfileRepo>()),)
       ..registerLazySingleton<SettingsUseCase>(
-          () => SettingsUseCase(repository: injector<SettingsRepo>()))
+          () => SettingsUseCase(repository: injector<SettingsRepo>()),)
+      ..registerLazySingleton<WishlistUseCase>(
+          () => WishlistUseCase(wishlistRepo: injector<WishListRepo>()),)
 
       //bloc
       ..registerFactory<FoodsListBloc>(
-          () => FoodsListBloc(getAllFoodsList: injector<GetAllFoodsList>()))
+          () => FoodsListBloc(getAllFoodsList: injector<GetAllFoodsList>()),)
       ..registerFactory<FoodItemDetailBloc>(() =>
-          FoodItemDetailBloc(getFoodItemDetail: injector<GetFoodItemDetail>()))
+          FoodItemDetailBloc(getFoodItemDetail: injector<GetFoodItemDetail>()),)
       ..registerFactory<UserProfileBloc>(() =>
-          UserProfileBloc(userProfileUseCase: injector<UserProfileUseCase>()))
+          UserProfileBloc(userProfileUseCase: injector<UserProfileUseCase>()),)
       ..registerFactory<SettingsBloc>(() =>
-          SettingsBloc(settingsUseCase: injector<SettingsUseCase>()));
+          SettingsBloc(settingsUseCase: injector<SettingsUseCase>()),)
+      ..registerFactory<WishlistBloc>(() =>
+          WishlistBloc(wishlistUseCase: injector<WishlistUseCase>()),);
   }
 }

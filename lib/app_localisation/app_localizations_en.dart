@@ -48,6 +48,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get spicy => 'Spicy';
 
   @override
+  String get wishlistEmpty => 'Your wishlist is empty';
+
+  @override
   String get mild => 'Mild';
 
   @override
@@ -87,6 +90,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get editProfile => 'Edit Profile';
 
   @override
+  String get updateProfile => 'Update Profile';
+
+  @override
+  String get isRequired => 'is Required';
+
+  @override
   String get orderHistory => 'Order history';
 
   @override
@@ -94,6 +103,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get goBack => 'Go Back';
+
+  @override
+  String get changeLanguage => 'Change Language';
 
   @override
   String get success => 'Success !';

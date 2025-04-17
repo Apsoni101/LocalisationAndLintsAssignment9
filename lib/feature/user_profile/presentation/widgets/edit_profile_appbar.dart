@@ -12,29 +12,29 @@ class EditProfileAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       leading: InkWell(
-        onTap: ()=>context.router.pop(),
+        onTap: ()=>context.router.maybePop(),
         child: Image.asset(
           AppAssets.arrowLeft,
           color: AppColors.white,
         ),
       ),
-      actions: [
+      actions: <Widget>[
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.settings,
               color: AppColors.white,
               size: 24,
             ), onPressed: () {
-              context.router.push(SettingsRoute());
+              context.router.push(const SettingsRoute());
           },
           ),
         )
-      ],
+      ,],
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight );
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight );
 }

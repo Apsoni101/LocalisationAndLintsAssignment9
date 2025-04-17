@@ -3,19 +3,19 @@ part of 'food_item_detail_bloc.dart';
 @immutable
 sealed class FoodItemDetailState extends Equatable {
   @override
-  List<Object> get props => [];
+  List<Object> get props => <Object>[];
 }
 
 final class FoodItemDetailInitial extends FoodItemDetailState {}
 final class FoodItemDetailLoading extends FoodItemDetailState {}
 class FoodItemDetailLoaded extends FoodItemDetailState {
+
+   FoodItemDetailLoaded({required this.food, required this.sliderValue});
   final FoodItemEntity food;
   final double sliderValue;
 
-   FoodItemDetailLoaded({required this.food, required this.sliderValue});
-
   @override
-  List<Object> get props => [food, sliderValue];
+  List<Object> get props => <Object>[food, sliderValue];
 
   FoodItemDetailLoaded copyWith({
     FoodItemEntity? food,
@@ -29,9 +29,9 @@ class FoodItemDetailLoaded extends FoodItemDetailState {
 }
 
 final class FoodItemDetailLoadError extends FoodItemDetailState {
-  final String error;
   FoodItemDetailLoadError({required this.error});
+  final String error;
   @override
-  List<Object> get props => [error];
+  List<Object> get props => <String>[error];
 }
 

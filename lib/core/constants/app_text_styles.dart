@@ -3,76 +3,76 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppTextStyles {
-  static const fontFamilyLobster = "Lobster";
-  static const fontFamilyPoppins = "Poppins";
-  static const fontFamilyRoboto = "Roboto";
-  static const fontFamilyInter = "Inter";
+  static const String fontFamilyLobster = "Lobster";
+  static const String fontFamilyPoppins = "Poppins";
+  static const String fontFamilyRoboto = "Roboto";
+  static const String fontFamilyInter = "Inter";
 
-  static final title = TextStyle(
+  static final TextStyle title = const TextStyle(
       fontFamily: fontFamilyLobster,
       fontWeight: FontWeight.w400,
       color: AppColors.title,
       fontSize: 35,
       letterSpacing: 0,
-      height: 1.35);
-  static final subTitle = TextStyle(
+      height: 1.35,);
+  static final TextStyle subTitle = const TextStyle(
       fontFamily: fontFamilyPoppins,
       fontWeight: FontWeight.w500,
       color: AppColors.subTitle,
       fontSize: 14,
       letterSpacing: 0,
-      height: 1);
-  static final searchHint = TextStyle(
+      height: 1,);
+  static final TextStyle searchHint = const TextStyle(
       fontFamily: fontFamilyRoboto,
       fontWeight: FontWeight.w500,
       color: AppColors.black,
       fontSize: 16,
       letterSpacing: 0,
-      height: 1);
-  static final rating = TextStyle(
+      height: 1,);
+  static final TextStyle rating = const TextStyle(
       fontFamily: fontFamilyRoboto,
       fontWeight: FontWeight.w500,
       color: AppColors.black,
       fontSize: 14,
       letterSpacing: 0,
-      height: 1.35);
-  static final gridItemTitle = TextStyle(
+      height: 1.35,);
+  static final TextStyle gridItemTitle = const TextStyle(
       fontFamily: fontFamilyRoboto,
       fontWeight: FontWeight.w600,
       color: AppColors.title,
       fontSize: 13,
       letterSpacing: 0,
-      height: 1.35);
-  static final gridItemSubTitle = TextStyle(
+      height: 1.35,);
+  static final TextStyle gridItemSubTitle = const TextStyle(
       fontFamily: fontFamilyRoboto,
       fontWeight: FontWeight.w400,
       color: AppColors.title,
       fontSize: 12,
       letterSpacing: 0,
-      height: 1.35);
-  static final splashTitle = TextStyle(
+      height: 1.35,);
+  static final TextStyle splashTitle = const TextStyle(
       fontFamily: fontFamilyLobster,
       fontWeight: FontWeight.w400,
       color: AppColors.white,
       fontSize: 50,
       letterSpacing: 0,
-      height: 1);
-  static final deliveryTime = TextStyle(
+      height: 1,);
+  static final TextStyle deliveryTime = const TextStyle(
       fontFamily: fontFamilyRoboto,
       fontWeight: FontWeight.w500,
       color: AppColors.deliveryTime,
       fontSize: 14,
       letterSpacing: 0,
-      height: 1.35);
-  static final foodItemDetailTitle = TextStyle(
+      height: 1.35,);
+  static final TextStyle foodItemDetailTitle = const TextStyle(
       fontFamily: fontFamilyRoboto,
       fontWeight: FontWeight.w600,
       color: AppColors.title,
       fontSize: 25,
       letterSpacing: 0,
       height: 1.35,
-      overflow: TextOverflow.ellipsis);
-  static final description = TextStyle(
+      overflow: TextOverflow.ellipsis,);
+  static final TextStyle description = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w400,
     color: AppColors.description,
@@ -80,7 +80,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.70,
   );
-  static final orderNow = TextStyle(
+  static final TextStyle orderNow = const TextStyle(
     fontFamily: fontFamilyInter,
     fontWeight: FontWeight.w600,
     color: AppColors.white,
@@ -88,7 +88,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.35,
   );
-  static final price = TextStyle(
+  static final TextStyle price = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w700,
     color: AppColors.white,
@@ -96,7 +96,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.35,
   );
-  static final spicy = TextStyle(
+  static final TextStyle spicy = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w500,
     color: AppColors.black,
@@ -104,7 +104,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.35,
   );
-  static final mild = TextStyle(
+  static final TextStyle mild = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w600,
     color: AppColors.mild,
@@ -112,7 +112,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.35,
   );
-  static final hot = TextStyle(
+  static final TextStyle hot = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w600,
     color: AppColors.hot,
@@ -120,7 +120,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.35,
   );
-  static final quantity = TextStyle(
+  static final TextStyle quantity = const TextStyle(
     fontFamily: fontFamilyInter,
     fontWeight: FontWeight.w600,
     color: AppColors.black,
@@ -128,7 +128,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.35,
   );
-  static final success = TextStyle(
+  static final TextStyle success = const TextStyle(
     fontFamily: fontFamilyPoppins,
     fontWeight: FontWeight.w700,
     color: AppColors.hot,
@@ -136,7 +136,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1,
   );
-  static final successTxt = TextStyle(
+  static final TextStyle successTxt = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w400,
     color: AppColors.deliveryTime,
@@ -144,7 +144,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.54,
   );
-  static final goBack = TextStyle(
+  static final TextStyle goBack = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w600,
     color: AppColors.white,
@@ -152,7 +152,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.54,
   );
-  static final logout = TextStyle(
+  static final TextStyle logout = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w600,
     color: AppColors.hot,
@@ -160,7 +160,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.54,
   );
-  static final editProfile = TextStyle(
+  static final TextStyle editProfile = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w600,
     color: AppColors.white,
@@ -168,7 +168,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.54,
   );
-  static final paymentTxt = TextStyle(
+  static final TextStyle paymentTxt = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w600,
     color: AppColors.labelTxt,
@@ -176,7 +176,7 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.32,
   );
-  static final textFieldHint = TextStyle(
+  static final TextStyle textFieldHint = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w700,
     color: AppColors.labelTxt,
@@ -184,10 +184,26 @@ class AppTextStyles {
     letterSpacing: 0,
     height: 1.54,
   );
-  static final textFieldStyle = TextStyle(
+  static final TextStyle textFieldStyle = const TextStyle(
     fontFamily: fontFamilyRoboto,
     fontWeight: FontWeight.w900,
     color: AppColors.black,
+    fontSize: 14,
+    letterSpacing: 0,
+    height: 1,
+  );
+  static final TextStyle selectedTab = const TextStyle(
+    fontFamily: fontFamilyInter,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+    fontSize: 14,
+    letterSpacing: 0,
+    height: 1,
+  );
+  static final TextStyle unSelectedTab = const TextStyle(
+    fontFamily: fontFamilyInter,
+    fontWeight: FontWeight.w400,
+    color: AppColors.description,
     fontSize: 14,
     letterSpacing: 0,
     height: 1,

@@ -48,6 +48,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get spicy => 'तीखा';
 
   @override
+  String get wishlistEmpty => 'आपकी विशलिस्ट खाली है';
+
+  @override
   String get mild => 'मुलायम';
 
   @override
@@ -87,6 +90,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get editProfile => 'प्रोफ़ाइल बदलें';
 
   @override
+  String get updateProfile => 'संपादित करें';
+
+  @override
+  String get isRequired => 'आवश्यक है';
+
+  @override
   String get orderHistory => 'ऑर्डर इतिहास';
 
   @override
@@ -94,6 +103,9 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get goBack => 'वापस जाएँ';
+
+  @override
+  String get changeLanguage => 'भाषा बदलें';
 
   @override
   String get success => 'सफलता !';

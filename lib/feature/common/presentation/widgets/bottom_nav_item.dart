@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
 
 class BottomNavItem extends StatelessWidget {
+
+  const BottomNavItem({
+    required this.onPress, required this.assetName, required this.isSelected, super.key,
+  });
   final VoidCallback onPress;
   final String assetName;
   final bool isSelected;
-
-  const BottomNavItem({
-    super.key,
-    required this.onPress,
-    required this.assetName,
-    required this.isSelected,
-  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +16,7 @@ class BottomNavItem extends StatelessWidget {
       onTap: onPress,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
+        children: <Widget>[
           Image.asset(
             assetName,
             color: AppColors.white,
@@ -28,7 +25,7 @@ class BottomNavItem extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           if (isSelected)
-            CircleAvatar(
+            const CircleAvatar(
               radius: 2,
               backgroundColor: AppColors.white,
             ),

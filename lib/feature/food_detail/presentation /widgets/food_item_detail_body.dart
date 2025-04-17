@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodappassignment8/app_localisation/app_localizations.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
 import 'package:foodappassignment8/feature/common/presentation/widgets/rating_row.dart';
@@ -6,33 +7,32 @@ import 'package:foodappassignment8/feature/food_detail/presentation%20/widgets/q
 import 'package:foodappassignment8/feature/food_detail/presentation%20/widgets/spice_selector.dart';
 import 'package:foodappassignment8/feature/food_detail/presentation%20/widgets/success_dialog.dart';
 import 'package:foodappassignment8/feature/food_listing/domain/entity/food_item_entity.dart';
-import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 class FoodItemDetailBody extends StatelessWidget {
-  final FoodItemEntity food;
 
-  const FoodItemDetailBody({super.key, required this.food});
+  const FoodItemDetailBody({required this.food, super.key});
+  final FoodItemEntity food;
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 14.0),
-      children: [
+      children: <Widget>[
         AspectRatio(
           aspectRatio: 1,
           child: Image.network(
             food.image,
-            errorBuilder: (context, error, stackTrace) {
+            errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
+                children: <Widget>[
+                  const Icon(
                     Icons.error,
                     color: Colors.red,
                     size: 50,
                   ),
                   Text(AppLocalizations.of(context).loadError)
-                ],
+                ,],
               );
             },
           ),
@@ -49,15 +49,15 @@ class FoodItemDetailBody extends StatelessWidget {
           height: 8,
         ),
         Row(
-          children: [
-            RatingRow(
+          children: <Widget>[
+            const RatingRow(
               color: AppColors.deliveryTime,
             ),
             Text(
               AppLocalizations.of(context).deliveryTime,
               style: AppTextStyles.deliveryTime,
             )
-          ],
+          ,],
         ),
         const SizedBox(
           height: 18,
@@ -69,29 +69,29 @@ class FoodItemDetailBody extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        Row(
-          children: [
+        const Row(
+          children: <Widget>[
             Expanded(
               flex: 2,
               child: SpiceSelector(),
             ),
-            Expanded(flex: 1, child: SizedBox.shrink()),
+            Expanded(child: SizedBox.shrink()),
             Expanded(flex: 2, child: QuantitySelector())
-          ],
+          ,],
         ),
         const SizedBox(
           height: 72,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: <Widget>[
             TextButton(
               onPressed: null,
               style: TextButton.styleFrom(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  backgroundColor: AppColors.buttonBg),
+                      borderRadius: BorderRadius.circular(20),),
+                  backgroundColor: AppColors.buttonBg,),
               child: Text(
                 "\$${food.price}",
                 style: AppTextStyles.price,
@@ -101,14 +101,14 @@ class FoodItemDetailBody extends StatelessWidget {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (context) => SuccessDialog(),
+                  builder: (BuildContext context) => const SuccessDialog(),
                 );
               },
               style: TextButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 54),
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 54),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  backgroundColor: AppColors.searchHint),
+                      borderRadius: BorderRadius.circular(20),),
+                  backgroundColor: AppColors.searchHint,),
               child: Text(
                 AppLocalizations.of(context).orderNowTxt,
                 style: AppTextStyles.orderNow,
@@ -116,7 +116,7 @@ class FoodItemDetailBody extends StatelessWidget {
             ),
           ],
         )
-      ],
+      ,],
     );
   }
 }

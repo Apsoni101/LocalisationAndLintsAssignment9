@@ -1,5 +1,5 @@
 
 class NetworkFailure {
-  final String message;
   NetworkFailure(this.message);
+  final String message;
 }

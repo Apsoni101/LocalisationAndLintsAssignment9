@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodappassignment8/app_localisation/app_localizations.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
 import 'package:foodappassignment8/feature/food_detail/presentation%20/bloc/food_item_detail_bloc.dart';
-import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 class SpiceSelector extends StatelessWidget {
   const SpiceSelector({super.key});
@@ -13,13 +13,13 @@ class SpiceSelector extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
-      children: [
+      children: <Widget>[
         Text(AppLocalizations.of(context).spicy, style: AppTextStyles.spicy),
         const SizedBox(
           height: 10,
         ),
         BlocBuilder<FoodItemDetailBloc, FoodItemDetailState>(
-          builder: (context, state) {
+          builder: (BuildContext context, FoodItemDetailState state) {
             if (state is FoodItemDetailLoaded) {
               return SliderTheme(
                   data: SliderTheme.of(context).copyWith(
@@ -33,14 +33,13 @@ class SpiceSelector extends StatelessWidget {
                   child: Slider(
                     padding: EdgeInsets.zero,
                     value: state.sliderValue,
-                    onChanged: (value) {
+                    onChanged: (double value) {
                       context
                           .read<FoodItemDetailBloc>()
                           .add(SliderValueChanged(value));
                     },
-                    min: 0,
                     max: 5,
-                  ));
+                  ),);
             }
             return const SizedBox.shrink();
           },
@@ -50,7 +49,7 @@ class SpiceSelector extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: <Widget>[
             Text(
               AppLocalizations.of(context).mild,
               style: AppTextStyles.mild,
@@ -61,7 +60,7 @@ class SpiceSelector extends StatelessWidget {
             ),
           ],
         )
-      ],
+      ,],
     );
   }
 }

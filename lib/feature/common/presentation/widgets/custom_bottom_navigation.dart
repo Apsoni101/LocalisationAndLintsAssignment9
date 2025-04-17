@@ -1,43 +1,44 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:foodappassignment8/core/constants/app_assets.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
 import 'bottom_nav_item.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
-  const CustomBottomNavigation({super.key});
+
+  const CustomBottomNavigation({
+    required this.activeIndex, required this.onTap, super.key,
+  });
+  final int activeIndex;
+  final void Function(int) onTap;
 
   @override
   Widget build(BuildContext context) {
-    final tabsRouter = AutoTabsRouter.of(context);
-    final activeIndex = tabsRouter.activeIndex;
-
     return BottomAppBar(
       shape: const CircularNotchedRectangle(),
       notchMargin: 10,
       color: AppColors.hot,
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
+        children: <Widget>[
           BottomNavItem(
-            onPress: () => tabsRouter.setActiveIndex(0),
+            onPress: () => onTap(0),
             assetName: AppAssets.home,
             isSelected: activeIndex == 0,
           ),
           BottomNavItem(
-            onPress: () => tabsRouter.setActiveIndex(1),
+            onPress: () => onTap(1),
             assetName: AppAssets.profileIc,
             isSelected: activeIndex == 1,
           ),
           const SizedBox(),
           BottomNavItem(
-            onPress: () => tabsRouter.setActiveIndex(2),
+            onPress: () => onTap(2),
             assetName: AppAssets.comment,
             isSelected: activeIndex == 2,
           ),
           BottomNavItem(
-            onPress: () => tabsRouter.setActiveIndex(3),
+            onPress: () => onTap(3),
             assetName: AppAssets.filledHeart,
             isSelected: activeIndex == 3,
           ),

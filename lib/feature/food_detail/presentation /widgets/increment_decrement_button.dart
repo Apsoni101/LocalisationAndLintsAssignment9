@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
 
 class IncrementDecrementButton extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback onPress;
 
   const IncrementDecrementButton(
-      {super.key, required this.icon, required this.onPress});
+      {required this.icon, required this.onPress, super.key,});
+  final IconData icon;
+  final VoidCallback onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class IncrementDecrementButton extends StatelessWidget {
           backgroundColor: AppColors.buttonBg,
           padding: EdgeInsets.zero,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
     );
   }
 }

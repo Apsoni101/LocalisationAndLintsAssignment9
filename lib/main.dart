@@ -5,32 +5,47 @@ import 'package:foodappassignment8/core/constants/app_colors.dart';
 import 'package:foodappassignment8/core/di/service_locator.dart';
 import 'package:foodappassignment8/core/navigation/app_router.dart';
 import 'package:foodappassignment8/feature/settings/presentation/bloc/settings_bloc.dart';
+import 'package:foodappassignment8/feature/wishlist/presentation/bloc/wishlist_bloc.dart';
+import 'package:nested/nested.dart';
 
-import 'l10n/app_localizations.dart';
+import 'app_localisation/app_localizations.dart';
+import 'feature/user_profile/presentation/bloc/user_profile_bloc.dart';
 
 void main() {
   AppInjector.setupInjector();
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
-  final _appRouter = AppRouter();
+  MyApp({super.key});
+
+  final AppRouter _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-      AppInjector.injector<SettingsBloc>()..add(LoadSettingsEvent()),
+    return MultiBlocProvider(
+      providers: <SingleChildWidget>[
+        BlocProvider<SettingsBloc>(//for settings globallly changing language
+          create: (BuildContext context) =>
+              AppInjector.injector<SettingsBloc>()..add(LoadSettingsEvent()),
+        ),
+        BlocProvider<UserProfileBloc>(//more than 2 screens use it one for edit anther for display
+          create: (BuildContext context) =>
+              AppInjector.injector<UserProfileBloc>()..add(LoadUserProfile()),
+        ),
+        BlocProvider<WishlistBloc>( //more than 2 screen use it one for adding and another for displaying
+          create: (BuildContext context) =>
+              AppInjector.injector<WishlistBloc>()..add(LoadWishlist()),
+        ),
+      ],
       child: BlocBuilder<SettingsBloc, SettingsState>(
-        builder: (context, state) {
+        builder: (BuildContext context, SettingsState state) {
           Locale? locale;
-          if (state is SettingsLoaded) {
-            locale = Locale(state.locale.code);
+          if (state is SettingsLoaded && state.locale?.code != null) {
+            locale = Locale(state.locale!.code!);
           }
 
-          return MaterialApp.router(
+          return MaterialApp.router(//wrapped around material since entire apps language is changed
             theme: ThemeData(
               primaryColor: AppColors.white,
               scaffoldBackgroundColor: AppColors.white,
@@ -41,7 +56,7 @@ class MyApp extends StatelessWidget {
             ),
             locale: locale,
             supportedLocales: AppLocalizations.supportedLocales,
-            localizationsDelegates: const [
+            localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
@@ -54,4 +69,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

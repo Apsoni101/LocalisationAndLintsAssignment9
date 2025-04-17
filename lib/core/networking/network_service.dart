@@ -4,29 +4,29 @@ import 'package:foodappassignment8/core/networking/network_constants.dart';
 import 'package:foodappassignment8/core/networking/network_failure.dart';
 
 class NetworkService {
-  final Dio dio;
 
   NetworkService({Dio? dio})
       : dio = dio ??
             Dio(BaseOptions(
                 baseUrl: NetworkConstants.baseUrl,
                 receiveTimeout: NetworkConstants.receiveTimeout,
-                connectTimeout: NetworkConstants.connectTimeout)){
-    this.dio.interceptors.add(LogInterceptor(responseBody: true, error: true));
+                connectTimeout: NetworkConstants.connectTimeout,),){
+    this.dio.interceptors.add(LogInterceptor(responseBody: true));
   }
+  final Dio dio;
 
-  Future<Either<NetworkFailure,Response>> getPath(String path,{Map<String,dynamic>? queryParams }) async {
+  Future<Either<NetworkFailure,Response<dynamic>>> getPath(String path,{Map<String,dynamic>? queryParams }) async {
     try{
-      final response=await  dio.get(path,queryParameters: queryParams);
-      final failure=_handleStatusCode(response.statusCode);
+      final Response<dynamic> response=await  dio.get(path,queryParameters: queryParams);
+      final NetworkFailure? failure=_handleStatusCode(response.statusCode);
       if(failure!=null){
-        return Left(failure);
+        return Left<NetworkFailure,Response<dynamic>>( failure);
       }
-      return Right(response);
+      return Right<NetworkFailure,Response<dynamic>>(response);
     } on DioException catch (e) {
-      return Left(_handleDioError(e));
+      return Left<NetworkFailure,Response<dynamic>>(_handleDioError(e));
     } catch (e) {
-      return Left(NetworkFailure("Unexpected error: ${e.toString()}"));
+      return Left<NetworkFailure,Response<dynamic>>(NetworkFailure("Unexpected error: ${e.toString()}"));
     }
 
   }
@@ -59,7 +59,7 @@ class NetworkService {
         return NetworkFailure("Send Timeout");
       case DioExceptionType.badResponse:
         return NetworkFailure(
-            "Bad Response: ${e.response?.statusCode ?? 'Unknown'}");
+            "Bad Response: ${e.response?.statusCode ?? 'Unknown'}",);
       case DioExceptionType.cancel:
         return NetworkFailure("Request Cancelled");
       case DioExceptionType.unknown:

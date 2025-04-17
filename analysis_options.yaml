@@ -21,8 +21,30 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    always_specify_types: true            # Require explicit types instead of `var`
+    avoid_print: true                     # Avoid using `print`; use a logger
+    prefer_const_constructors: true       # Use `const` constructors where possible
+    use_key_in_widget_constructors: true  # Ensure widgets use a `Key`
+    avoid_unnecessary_containers: true    # Warn if `Container` is unnecessary
+    prefer_final_locals: true             # Use `final` for variables that never change
+    sort_constructors_first: true         # Constructors should appear before other methods
+    require_trailing_commas: true         # Enforce trailing commas in multi-line lists/params
+    unnecessary_this: true                # Avoid unnecessary `this.` usage
+    avoid_returning_null_for_future: true # Return Future.value() instead of null in async funcs
+    prefer_typing_uninitialized_variables: true # Avoid using `var` with uninitialized variables
+    avoid_positional_boolean_parameters: true   # Use named parameters for better readability
+    avoid_multiple_declarations_per_line: true  # Only one declaration per line
+    prefer_const_literals_to_create_immutables: true # Use const lists/maps/sets when possible
+    cascade_invocations: true                   # Use cascade (`..`) for multiple calls on the same object
+    avoid_empty_else: true                         # Prevents having empty else blocks
+    avoid_init_to_null: true                       # No need to assign `null` to variables; it's the default
+    avoid_redundant_argument_values: true          # Avoid passing arguments that already use default values
+    use_super_parameters: true                     # Use shorthand `super.param` in constructors
+    avoid_classes_with_only_static_members: false   # Use top-level functions instead of utility classes
+    prefer_final_fields: true                      # Fields that never change should be `final`
+    unnecessary_late: true                         # Avoid using `late` when it's not necessary
+    always_put_required_named_parameters_first: true # Keeps constructor params ordered (required first)
+
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
