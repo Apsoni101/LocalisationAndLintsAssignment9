@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:foodappassignment8/core/constants/app_assets.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
-import 'package:foodappassignment8/core/constants/app_strings.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
+import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 class SuccessDialog extends StatelessWidget {
   const SuccessDialog({super.key});
@@ -29,12 +29,12 @@ class SuccessDialog extends StatelessWidget {
                 child: Image.asset(AppAssets.right)),
             const SizedBox(height: 28),
             Text(
-              AppsStrings.success,
+              AppLocalizations.of(context).success,
               style: AppTextStyles.success,
             ),
             const SizedBox(height: 8),
             Text(
-              AppsStrings.successTxt,
+              AppLocalizations.of(context).successTxt,
               style: AppTextStyles.successTxt,
               textAlign: TextAlign.center,
             ),
@@ -50,7 +50,7 @@ class SuccessDialog extends StatelessWidget {
               ),
               onPressed: () { context.router.pop();},
               child: Text(
-                AppsStrings.goBack,
+                AppLocalizations.of(context).goBack,
                 style: AppTextStyles.goBack,
               ),
             )

@@ -1,7 +1,7 @@
 import 'package:foodappassignment8/feature/food_listing/domain/entity/food_item_entity.dart';
 
 class FoodItemModel extends FoodItemEntity {
-  FoodItemModel(
+  const FoodItemModel(
       {required super.id,
       required super.title,
       required super.image,

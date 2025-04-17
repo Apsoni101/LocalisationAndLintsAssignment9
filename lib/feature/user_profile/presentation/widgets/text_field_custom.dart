@@ -1,49 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
+import 'package:foodappassignment8/core/constants/app_text_styles.dart';
 
+class CustomTextFormField extends StatefulWidget {
+  final String? labelText;
+  final Widget? label;
 
-class TextFormFieldWidget extends StatelessWidget {
-  final String label;
-  final bool obscureText;
-  final TextInputType? keyboardType;
-  final int maxLines;
-
-   TextFormFieldWidget({
-    super.key,
-    required this.label,
-    this.obscureText = false,
-    this.keyboardType,
-    this.maxLines = 1,
-  });
-
-  final _borderColor = AppColors.border;
+  const CustomTextFormField({super.key, this.labelText, this.label});
 
   @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: obscureText,
-      keyboardType: keyboardType,
-      maxLines: maxLines,
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
 
-
-      decoration: InputDecoration(
-        labelText: label,
-
-        floatingLabelBehavior: FloatingLabelBehavior.auto,
-
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 39,
-          vertical: 10,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: _borderColor, width: 2),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: _borderColor, width: 2),
-        ),
-      ),
-    );
-  }
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  @override
+  Widget build(BuildContext context) => TextFormField(
+        style: AppTextStyles.textFieldStyle,
+        cursorColor: AppColors.black,
+        decoration: InputDecoration(
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
+            label: widget.label,
+            labelText: widget.labelText,
+            labelStyle: AppTextStyles.textFieldHint,
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide:
+                  const BorderSide(color: AppColors.outlineBorder, width: 2),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide:
+                  const BorderSide(color: AppColors.outlineBorder, width: 2),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide:
+                  const BorderSide(color: AppColors.outlineBorder, width: 2),
+            )),
+      );
 }

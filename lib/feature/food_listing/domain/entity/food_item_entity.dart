@@ -1,4 +1,6 @@
-class FoodItemEntity {
+import 'package:equatable/equatable.dart';
+
+class FoodItemEntity extends Equatable {
   final int id;
   final String title;
   final String image;
@@ -11,7 +13,7 @@ class FoodItemEntity {
   final double? discount;
   final bool? popular;
 
-  FoodItemEntity({
+  const FoodItemEntity({
     required this.id,
     required this.title,
     required this.image,
@@ -21,8 +23,8 @@ class FoodItemEntity {
     required this.model,
     required this.color,
     required this.category,
-    this.discount=0.0,
-    this.popular=false,
+    this.discount = 0.0,
+    this.popular = false,
   });
 
   FoodItemEntity copyWith({
@@ -52,4 +54,19 @@ class FoodItemEntity {
       popular: popular ?? this.popular,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        image,
+        price,
+        description,
+        brand,
+        model,
+        color,
+        category,
+        discount,
+        popular,
+      ];
 }

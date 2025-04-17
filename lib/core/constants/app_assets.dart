@@ -18,4 +18,10 @@ class AppAssets{
   static const comment='assets/icons/comment.png';
   static const filledHeart='assets/icons/filled_heart.png';
   static const add='assets/icons/add.png';
+  static const arrowRight='assets/icons/right_arrow.png';
+  static const lock='assets/icons/lock.png';
+  static const logout='assets/icons/signout.png';
+  static const borderProfile='assets/images/borderProfile.png';
+  static const halfLeftBurger='assets/images/halfleftburger.png';
+  static const halfRightBurger='assets/images/halfRightBurger.png';
 }

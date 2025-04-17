@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodappassignment8/core/constants/app_colors.dart';
-import 'package:foodappassignment8/feature/common/presentation/widgets/category_row.dart';
 import 'package:foodappassignment8/feature/food_listing/domain/entity/food_item_entity.dart';
 import 'package:foodappassignment8/feature/food_listing/presentation%20/bloc/foods_list_bloc.dart';
 import 'package:foodappassignment8/feature/food_listing/presentation%20/widgets/custom_search_field.dart';
@@ -26,18 +23,16 @@ class FoodListBody extends StatelessWidget {
           Row(
             spacing: 16,
             children: [
-              Expanded(
-                child: CustomSearchField(
-                  onChanged: (value) {
-                    context.read<FoodsListBloc>().add(SearchFoodsEvent(value));
-                  },
-                ),
+              CustomSearchField(
+                onChanged: (value) {
+                  context.read<FoodsListBloc>().add(SearchFoodsEvent(value));
+                },
               ),
               FilterButton(onTap: () {}),
             ],
           ),
-          CategoryRow(),
-          Expanded( child: FoodsGridViewBody(foods: foods)),
+          DefaultTabController(length: 3,
+          child: FoodsGridViewBody(foods: foods)),
         ],
       ),
     );

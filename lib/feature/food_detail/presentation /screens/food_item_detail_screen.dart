@@ -17,7 +17,7 @@ class FoodItemDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          AppInjector().injector<FoodItemDetailBloc>()..add(FetchFoodItemDetails()),
+          AppInjector.injector<FoodItemDetailBloc>()..add(FetchFoodItemDetails()),
       child: Scaffold(
         appBar: AppBar(
           leading: InkWell(
@@ -40,7 +40,7 @@ class FoodItemDetailScreen extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               case FoodItemDetailLoaded():
                 final food = state.food;
-                return SafeArea(child: FoodItemDetailBody(food: food));
+                return FoodItemDetailBody(food: food);
               case FoodItemDetailLoadError(:final error):
                 return Center(child: Text(error));
               case FoodItemDetailInitial():

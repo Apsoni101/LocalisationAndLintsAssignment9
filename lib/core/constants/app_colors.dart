@@ -21,6 +21,9 @@ class AppColors{
   static const divider=Color(0xFFE8E8E8);
   static const border=Color(0xFFE1E1E1);
   static const rowItem=Color(0xAB939292);
+  static const outlineBorder=Color(0xFFE5E5E5);
+  static const labelTxt=Color(0xFFA0A0A0);
+  static const editProfileBg=Color(0xFFF40B35);
 
 
 

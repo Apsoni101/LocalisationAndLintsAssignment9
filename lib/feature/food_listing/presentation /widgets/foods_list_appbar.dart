@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:foodappassignment8/core/constants/app_assets.dart';
-import 'package:foodappassignment8/core/constants/app_strings.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
+import 'package:foodappassignment8/core/navigation/app_router.gr.dart';
+import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 class FoodsListAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FoodsListAppBar({super.key});
@@ -12,14 +14,14 @@ class FoodsListAppBar extends StatelessWidget implements PreferredSizeWidget {
       flexibleSpace: SafeArea(
           child: ListTile(
             title: Text(
-              AppsStrings.appName,
+              AppLocalizations.of(context).appName,
               style: AppTextStyles.title,
             ),titleAlignment: ListTileTitleAlignment.top,
             subtitle: Text(
-              AppsStrings.orderQuote,
+              AppLocalizations.of(context).orderQuote,
               style: AppTextStyles.subTitle,
             ),
-            trailing:Image.asset(AppAssets.profile,width:50 ,height: 50,),
+            trailing:InkWell(onTap: ()=>context.router.navigate(EditProfileRoute()),child: Image.asset(AppAssets.profile,width:50 ,height: 50,)),
           )),
     );
   }

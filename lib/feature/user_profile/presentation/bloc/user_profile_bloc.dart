@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:foodappassignment8/core/constants/app_strings.dart';
 import 'package:foodappassignment8/feature/user_profile/domain/entity/user_profile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +19,8 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
       emit(UserProfileLoading());
       final userProfile = userProfileUseCase.getUserProfile();
       emit(UserProfileLoaded(userProfile));
-    } catch (_) {
-      emit(UserProfileError(AppsStrings.loadError));
+    } catch (e) {
+      emit(UserProfileError(e.toString()));
     }
   }
 
@@ -29,8 +28,8 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
     try {
       userProfileUseCase.updateUserProfile(event.user);
       emit(UserProfileUpdated(event.user));
-    } catch (_) {
-      emit(UserProfileError(AppsStrings.updateError));
+    } catch (e) {
+      emit(UserProfileError(e.toString()));
     }
   }
 

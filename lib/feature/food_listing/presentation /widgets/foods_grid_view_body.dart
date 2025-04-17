@@ -11,7 +11,7 @@ class FoodsGridViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GridView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 40.0),
+        padding: const EdgeInsets.only(bottom: 40.0),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 20.0,

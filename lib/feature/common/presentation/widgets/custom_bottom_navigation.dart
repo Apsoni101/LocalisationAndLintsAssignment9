@@ -10,35 +10,38 @@ class CustomBottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabsRouter = AutoTabsRouter.of(context);
+    final activeIndex = tabsRouter.activeIndex;
 
     return BottomAppBar(
       shape: const CircularNotchedRectangle(),
       notchMargin: 10,
       color: AppColors.hot,
+      padding: EdgeInsets.symmetric(horizontal: 30),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildItem(context, tabsRouter, 0, AppAssets.home),
-          _buildItem(context, tabsRouter, 1, AppAssets.profileIc),
-          const Expanded(flex: 1, child: SizedBox.shrink()),
-          _buildItem(context, tabsRouter, 2, AppAssets.comment),
-          _buildItem(context, tabsRouter, 3, AppAssets.filledHeart),
+          BottomNavItem(
+            onPress: () => tabsRouter.setActiveIndex(0),
+            assetName: AppAssets.home,
+            isSelected: activeIndex == 0,
+          ),
+          BottomNavItem(
+            onPress: () => tabsRouter.setActiveIndex(1),
+            assetName: AppAssets.profileIc,
+            isSelected: activeIndex == 1,
+          ),
+          const SizedBox(),
+          BottomNavItem(
+            onPress: () => tabsRouter.setActiveIndex(2),
+            assetName: AppAssets.comment,
+            isSelected: activeIndex == 2,
+          ),
+          BottomNavItem(
+            onPress: () => tabsRouter.setActiveIndex(3),
+            assetName: AppAssets.filledHeart,
+            isSelected: activeIndex == 3,
+          ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildItem(BuildContext context, TabsRouter tabsRouter, int index, String asset) {
-    final isSelected = tabsRouter.activeIndex == index;
-
-    return Expanded(
-      flex: 1,
-      child: BottomNavItem(
-        onPress: () {
-          tabsRouter.setActiveIndex(index);
-        },
-        assetName: asset,
-        isSelected: isSelected,
       ),
     );
   }

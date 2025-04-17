@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foodappassignment8/core/constants/app_assets.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
-import 'package:foodappassignment8/core/constants/app_strings.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
+import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 
 class CustomSearchField extends StatelessWidget {
@@ -14,7 +14,7 @@ class CustomSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SearchBar(
-        hintText: AppsStrings.searchTxt,
+        hintText: AppLocalizations.of(context).searchTxt,
         hintStyle:  WidgetStatePropertyAll<TextStyle>(
           AppTextStyles.searchHint
         ),

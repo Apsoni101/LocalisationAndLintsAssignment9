@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodappassignment8/core/constants/app_colors.dart';
-import 'package:foodappassignment8/core/constants/app_strings.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
 import 'package:foodappassignment8/feature/food_detail/presentation%20/widgets/increment_decrement_button.dart';
+import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 class QuantitySelector extends StatelessWidget {
   const QuantitySelector({super.key});
@@ -13,7 +12,7 @@ class QuantitySelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          AppsStrings.portion,
+          AppLocalizations.of(context).portion,
           style: AppTextStyles.spicy,
         ),
         Row(

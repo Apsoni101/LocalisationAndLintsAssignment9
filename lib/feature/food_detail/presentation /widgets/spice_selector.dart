@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
-import 'package:foodappassignment8/core/constants/app_strings.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
 import 'package:foodappassignment8/feature/food_detail/presentation%20/bloc/food_item_detail_bloc.dart';
+import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 class SpiceSelector extends StatelessWidget {
   const SpiceSelector({super.key});
@@ -14,7 +14,7 @@ class SpiceSelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(AppsStrings.spicy, style: AppTextStyles.spicy),
+        Text(AppLocalizations.of(context).spicy, style: AppTextStyles.spicy),
         const SizedBox(
           height: 10,
         ),
@@ -52,11 +52,11 @@ class SpiceSelector extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              AppsStrings.mild,
+              AppLocalizations.of(context).mild,
               style: AppTextStyles.mild,
             ),
             Text(
-              AppsStrings.hot,
+              AppLocalizations.of(context).hot,
               style: AppTextStyles.hot,
             ),
           ],

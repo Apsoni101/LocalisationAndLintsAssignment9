@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foodappassignment8/core/constants/app_assets.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
-import 'package:foodappassignment8/core/constants/app_strings.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
+import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 class RatingRow extends StatelessWidget {
   final Color? color;
@@ -18,7 +18,7 @@ class RatingRow extends StatelessWidget {
           AppAssets.rating,
           color: AppColors.rating,
         ),
-        Text(AppsStrings.rating5,style: AppTextStyles.rating.copyWith(color: color),)
+        Text(AppLocalizations.of(context).rating5,style: AppTextStyles.rating.copyWith(color: color),)
       ],
     );
   }

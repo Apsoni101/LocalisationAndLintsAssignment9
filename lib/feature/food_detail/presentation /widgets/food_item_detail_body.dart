@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:foodappassignment8/core/constants/app_colors.dart';
-import 'package:foodappassignment8/core/constants/app_strings.dart';
 import 'package:foodappassignment8/core/constants/app_text_styles.dart';
 import 'package:foodappassignment8/feature/common/presentation/widgets/rating_row.dart';
 import 'package:foodappassignment8/feature/food_detail/presentation%20/widgets/quantity_selector.dart';
 import 'package:foodappassignment8/feature/food_detail/presentation%20/widgets/spice_selector.dart';
 import 'package:foodappassignment8/feature/food_detail/presentation%20/widgets/success_dialog.dart';
 import 'package:foodappassignment8/feature/food_listing/domain/entity/food_item_entity.dart';
+import 'package:foodappassignment8/l10n/app_localizations.dart';
 
 class FoodItemDetailBody extends StatelessWidget {
   final FoodItemEntity food;
@@ -20,7 +20,22 @@ class FoodItemDetailBody extends StatelessWidget {
       children: [
         AspectRatio(
           aspectRatio: 1,
-          child: Image.network(food.image),
+          child: Image.network(
+            food.image,
+            errorBuilder: (context, error, stackTrace) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.error,
+                    color: Colors.red,
+                    size: 50,
+                  ),
+                  Text(AppLocalizations.of(context).loadError)
+                ],
+              );
+            },
+          ),
         ),
         const SizedBox(
           height: 25,
@@ -39,7 +54,7 @@ class FoodItemDetailBody extends StatelessWidget {
               color: AppColors.deliveryTime,
             ),
             Text(
-              AppsStrings.deliveryTime,
+              AppLocalizations.of(context).deliveryTime,
               style: AppTextStyles.deliveryTime,
             )
           ],
@@ -56,7 +71,10 @@ class FoodItemDetailBody extends StatelessWidget {
         ),
         Row(
           children: [
-            Expanded(flex: 2, child: SpiceSelector(),),
+            Expanded(
+              flex: 2,
+              child: SpiceSelector(),
+            ),
             Expanded(flex: 1, child: SizedBox.shrink()),
             Expanded(flex: 2, child: QuantitySelector())
           ],
@@ -80,7 +98,7 @@ class FoodItemDetailBody extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: (){
+              onPressed: () {
                 showDialog(
                   context: context,
                   builder: (context) => SuccessDialog(),
@@ -92,7 +110,7 @@ class FoodItemDetailBody extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20)),
                   backgroundColor: AppColors.searchHint),
               child: Text(
-                AppsStrings.orderNowTxt,
+                AppLocalizations.of(context).orderNowTxt,
                 style: AppTextStyles.orderNow,
               ),
             ),
