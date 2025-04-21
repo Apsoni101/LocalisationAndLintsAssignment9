@@ -36,14 +36,6 @@ class UserProfileEditState extends UserProfileState {
   @override
   List<Object> get props => <Object>[isEditing];
 }
-class UserProfileEditState extends UserProfileState {
-  final bool isEditing;
-
-  UserProfileEditState(this.isEditing);
-
-  @override
-  List<Object> get props => [isEditing];
-}
 
 class UserProfileError extends UserProfileState {
 
